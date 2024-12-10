@@ -1,17 +1,29 @@
 import React from 'react'
 import { EXPERIENCES } from '../constants'
-
+import {motion} from "framer-motion"
 const Experiences = () => {
   return (
     <div className='border-b border-neutral-900 pb-4'>
-        <h1 className='my-20 text-center text-4xl'>Experiences</h1>
+        <motion.h1 
+        whileInView={{opacity:1, y:0}}
+        initial={{opacity:0, y:-100}}
+        transition={{duration:0.5}}
+        className='my-20 text-center text-4xl'>Experiences</motion.h1>
         <div>{
             EXPERIENCES.map((experiences, index) => (
                 <div className='mb-8 flex flex-wrap lg:justify-center' key={index}>
-                    <div className='w-full lg:w-1/2'>
+                    <motion.div 
+                    whileInView={{opacity:1, x:0}}
+                    initial={{opacity:0, x:-100}}
+                    transition={{duration:1}}
+                    className='w-full lg:w-1/4'>
                         <p className='mb-2 text-sm text-neutral-400'>{experiences.year}</p>
-                    </div>
-                    <div className='w-full lg:w-3/4 max-w-xl '>
+                    </motion.div>
+                    <motion.div 
+                    whileInView={{opacity:1, x:0}}
+                    initial={{opacity:0, x:100}}
+                    transition={{duration:1}}
+                    className='w-full lg:w-3/4 max-w-xl '>
                         <h6 className='mb-2 font-semibold'>
                             {experiences.role} - {" "}
                             <span className='text-sm text-purple-50'>
@@ -24,7 +36,7 @@ const Experiences = () => {
                                 {tech}
                             </span>
                         ))}
-                    </div>
+                    </motion.div>
                 </div>
             ))}
         </div>
